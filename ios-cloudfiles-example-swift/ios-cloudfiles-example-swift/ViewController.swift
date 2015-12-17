@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let client = RSClient(provider: RSProviderTypeRackspaceUK, username: "charlesofdl", apiKey: "834cdac66be13c28109050b0704cc7a3")
+        let client = RSClient(provider: RSProviderTypeRackspaceUK, username: "username", apiKey: "apikey")
         
         client.getCDNContainers({ (containers, jsonError) in
             print(containers)

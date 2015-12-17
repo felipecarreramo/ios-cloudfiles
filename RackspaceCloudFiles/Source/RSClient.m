@@ -146,12 +146,13 @@
 - (NSURLRequest *)authenticationRequest {
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:self.authURL];
-    NSDictionary *dict = [@"auth":
-                                    [@"RAX-KSKEY:apiKeyCredentials":
-                                            [@"username": self.username,
-                                             @"apiKey": self.apiKey]
-                                     ]
-                          ];
+    NSDictionary *dict = @{@"auth":
+                               @{@"RAX-KSKEY:apiKeyCredentials":
+                                     @{ @"username": self.username,
+                                        @"apiKey": self.apiKey
+                                        }
+                                 }
+                           };
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[self paramsToAuthenticate:dict]];
@@ -165,7 +166,7 @@
     NSMutableArray *parameterArray = [NSMutableArray array];
     
     [params enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop) {
-        NSString *param = [NSString stringWithFormat:@"%@=%@", key, [self percentEscapeString:obj]];
+        NSString *param = [NSString stringWithFormat:@"%@=%@", key, [obj stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]]];
         [parameterArray addObject:param];
     }];
     
