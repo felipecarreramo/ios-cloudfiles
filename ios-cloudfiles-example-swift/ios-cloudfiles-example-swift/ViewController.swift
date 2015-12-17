@@ -15,9 +15,11 @@ class ViewController: UIViewController {
         
         let client = RSClient(provider: RSProviderTypeRackspaceUS, username: "my username", apiKey: "secret")
         
-//        RSClient *client = [[RSClient alloc] initWithProvider:RSProviderTypeRackspaceUS username:@"my username" apiKey:@"secret"];
-        
-        
+        client.getCDNContainers({ (containers, jsonError) in
+            print(containers)
+        }, failure: { (response, data, error) in
+            print(error)
+        })
     }
 
     override func didReceiveMemoryWarning() {

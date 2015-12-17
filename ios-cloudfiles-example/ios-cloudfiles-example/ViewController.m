@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    RSClient *client = [[RSClient alloc] initWithProvider:RSProviderTypeRackspaceUS username:@"charlesofdl" apiKey:@"834cdac66be13c28109050b0704cc7a3"];
+    RSClient *client = [[RSClient alloc] initWithProvider:RSProviderTypeRackspaceUS username:@"my username" apiKey:@"secret"];
     
     [client getCDNContainers:^(NSArray *containers, NSError *jsonError) {
         
