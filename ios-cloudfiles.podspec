@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
 
   s.author             = { "" => "" }
-  s.source       = { :git => "https://github.com/felipecarreramo/ios-cloudfiles.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/felipecarreramo/ios-cloudfiles.git", :tag => "1.0.2" }
   s.source_files  = "RackspaceCloudFiles/Source", "RackspaceCloudFiles/Source/*.{h,m}"
   s.requires_arc      = true
 
