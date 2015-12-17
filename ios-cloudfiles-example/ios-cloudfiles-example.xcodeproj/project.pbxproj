@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BAB1E29F20A988BAFCFE350C /* libPods-ios-cloudfiles-example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D1AD785018A99D628FAC2D6 /* libPods-ios-cloudfiles-example.a */; };
 		C79E030D1C2321DC007B3F31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C79E030C1C2321DC007B3F31 /* main.m */; };
 		C79E03101C2321DC007B3F31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C79E030F1C2321DC007B3F31 /* AppDelegate.m */; };
 		C79E03131C2321DC007B3F31 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C79E03121C2321DC007B3F31 /* ViewController.m */; };
@@ -17,9 +16,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		080CF811013866A564C5520D /* Pods-ios-cloudfiles-example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-cloudfiles-example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios-cloudfiles-example/Pods-ios-cloudfiles-example.debug.xcconfig"; sourceTree = "<group>"; };
-		1D1AD785018A99D628FAC2D6 /* libPods-ios-cloudfiles-example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-cloudfiles-example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C9193963ED335DEA94D05E9 /* Pods-ios-cloudfiles-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-cloudfiles-example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios-cloudfiles-example/Pods-ios-cloudfiles-example.release.xcconfig"; sourceTree = "<group>"; };
 		C79E03081C2321DC007B3F31 /* ios-cloudfiles-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-cloudfiles-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C79E030C1C2321DC007B3F31 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C79E030E1C2321DC007B3F31 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -37,37 +33,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAB1E29F20A988BAFCFE350C /* libPods-ios-cloudfiles-example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1C7C37FDAAD6DAD257E80DDD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				080CF811013866A564C5520D /* Pods-ios-cloudfiles-example.debug.xcconfig */,
-				8C9193963ED335DEA94D05E9 /* Pods-ios-cloudfiles-example.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		4359D70668E96BD4E36A9A82 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1D1AD785018A99D628FAC2D6 /* libPods-ios-cloudfiles-example.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C79E02FF1C2321DC007B3F31 = {
 			isa = PBXGroup;
 			children = (
 				C79E030A1C2321DC007B3F31 /* ios-cloudfiles-example */,
 				C79E03091C2321DC007B3F31 /* Products */,
-				1C7C37FDAAD6DAD257E80DDD /* Pods */,
-				4359D70668E96BD4E36A9A82 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,12 +86,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C79E031F1C2321DC007B3F31 /* Build configuration list for PBXNativeTarget "ios-cloudfiles-example" */;
 			buildPhases = (
-				A187B171220A3AD5AF077840 /* Check Pods Manifest.lock */,
 				C79E03041C2321DC007B3F31 /* Sources */,
 				C79E03051C2321DC007B3F31 /* Frameworks */,
 				C79E03061C2321DC007B3F31 /* Resources */,
-				4EC2D8A7DF179D9382794FDA /* Embed Pods Frameworks */,
-				37B9422597FA1E8D18E01B4E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,54 +143,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		37B9422597FA1E8D18E01B4E /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ios-cloudfiles-example/Pods-ios-cloudfiles-example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4EC2D8A7DF179D9382794FDA /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ios-cloudfiles-example/Pods-ios-cloudfiles-example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A187B171220A3AD5AF077840 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C79E03041C2321DC007B3F31 /* Sources */ = {
@@ -334,7 +259,6 @@
 		};
 		C79E03201C2321DC007B3F31 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 080CF811013866A564C5520D /* Pods-ios-cloudfiles-example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "ios-cloudfiles-example/Info.plist";
@@ -346,7 +270,6 @@
 		};
 		C79E03211C2321DC007B3F31 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C9193963ED335DEA94D05E9 /* Pods-ios-cloudfiles-example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "ios-cloudfiles-example/Info.plist";

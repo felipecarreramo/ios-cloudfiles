@@ -1,1 +1,0 @@
-../../../ios-cloudfiles/RackspaceCloudFiles/Source/RSClient.h

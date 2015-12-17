@@ -10,3 +10,9 @@ build/
 *.mode2v3
 xcuserdata
 RackspaceCloudFilesTest.plist
+
+
+ios-cloudfiles-example/Pods
+ios-cloudfiles-example/ios-cloudfiles-example.xcworkspace
+ios-cloudfiles-example-swift/Pods
+ios-cloudfiles-example-swift/ios-cloudfiles-example-swift.xcworkspace
