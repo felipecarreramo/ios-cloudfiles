@@ -3,13 +3,7 @@
 # Uncomment this line if you're using Swift
 # use_frameworks!
 
-target 'RackspaceCloudFiles' do
-
+target 'ios-cloudfiles-example' do
 	pod 'ios-cloudfiles', :git => 'https://github.com/felipecarreramo/ios-cloudfiles.git'
-
-end
-
-target 'RackspaceCloudFilesTests' do
-
 end
 

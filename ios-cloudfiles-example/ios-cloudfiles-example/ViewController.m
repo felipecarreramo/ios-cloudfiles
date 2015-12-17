@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <ios-cloudfiles/RSClient.h>
 
 @interface ViewController ()
 
@@ -16,7 +17,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    RSClient *client = [[RSClient alloc] initWithProvider:RSProviderTypeRackspaceUS username:@"charlesofdl" apiKey:@"834cdac66be13c28109050b0704cc7a3"];
+    
+    [client getCDNContainers:^(NSArray *containers, NSError *jsonError) {
+        
+        NSLog(@"containers %@", containers);
+        
+    } failure:^(NSHTTPURLResponse * response, NSData *data, NSError *error) {
+        
+    }];
+    
+
 }
 
 - (void)didReceiveMemoryWarning {

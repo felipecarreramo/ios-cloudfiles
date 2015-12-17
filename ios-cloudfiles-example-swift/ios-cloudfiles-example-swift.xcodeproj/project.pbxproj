@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		310FEF358A4DA2E256E33DF2 /* libPods-ios-cloudfiles-example-swift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF347A6F534F6E8DBB29689 /* libPods-ios-cloudfiles-example-swift.a */; };
 		C79E032F1C233DF7007B3F31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79E032E1C233DF7007B3F31 /* AppDelegate.swift */; };
 		C79E03311C233DF7007B3F31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79E03301C233DF7007B3F31 /* ViewController.swift */; };
 		C79E03341C233DF7007B3F31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79E03321C233DF7007B3F31 /* Main.storyboard */; };
@@ -15,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6549F69F9DB7E1646970FB07 /* Pods-ios-cloudfiles-example-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-cloudfiles-example-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios-cloudfiles-example-swift/Pods-ios-cloudfiles-example-swift.release.xcconfig"; sourceTree = "<group>"; };
+		BBF347A6F534F6E8DBB29689 /* libPods-ios-cloudfiles-example-swift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-cloudfiles-example-swift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C79E032B1C233DF7007B3F31 /* ios-cloudfiles-example-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-cloudfiles-example-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C79E032E1C233DF7007B3F31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C79E03301C233DF7007B3F31 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,8 @@
 		C79E03351C233DF7007B3F31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C79E03381C233DF7007B3F31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C79E033A1C233DF7007B3F31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C79E03421C233EBA007B3F31 /* ios_cloudfiles_example_swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ios_cloudfiles_example_swift-Bridging-Header.h"; sourceTree = "<group>"; };
+		EFF7475F334EF6E94959A88C /* Pods-ios-cloudfiles-example-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-cloudfiles-example-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios-cloudfiles-example-swift/Pods-ios-cloudfiles-example-swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +34,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				310FEF358A4DA2E256E33DF2 /* libPods-ios-cloudfiles-example-swift.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50E499C7DF45D46FD2581B4C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBF347A6F534F6E8DBB29689 /* libPods-ios-cloudfiles-example-swift.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B4D3AC3344CCA79E79375A00 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EFF7475F334EF6E94959A88C /* Pods-ios-cloudfiles-example-swift.debug.xcconfig */,
+				6549F69F9DB7E1646970FB07 /* Pods-ios-cloudfiles-example-swift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C79E03221C233DF7007B3F31 = {
 			isa = PBXGroup;
 			children = (
 				C79E032D1C233DF7007B3F31 /* ios-cloudfiles-example-swift */,
 				C79E032C1C233DF7007B3F31 /* Products */,
+				B4D3AC3344CCA79E79375A00 /* Pods */,
+				50E499C7DF45D46FD2581B4C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +85,7 @@
 				C79E03351C233DF7007B3F31 /* Assets.xcassets */,
 				C79E03371C233DF7007B3F31 /* LaunchScreen.storyboard */,
 				C79E033A1C233DF7007B3F31 /* Info.plist */,
+				C79E03421C233EBA007B3F31 /* ios_cloudfiles_example_swift-Bridging-Header.h */,
 			);
 			path = "ios-cloudfiles-example-swift";
 			sourceTree = "<group>";
@@ -71,9 +97,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C79E033D1C233DF7007B3F31 /* Build configuration list for PBXNativeTarget "ios-cloudfiles-example-swift" */;
 			buildPhases = (
+				A7C19BD75D15700C6175D558 /* Check Pods Manifest.lock */,
 				C79E03271C233DF7007B3F31 /* Sources */,
 				C79E03281C233DF7007B3F31 /* Frameworks */,
 				C79E03291C233DF7007B3F31 /* Resources */,
+				99D475C88629740E9764FBD6 /* Embed Pods Frameworks */,
+				AB6DE4CF6EB1328B79D9DC11 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,6 +158,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		99D475C88629740E9764FBD6 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ios-cloudfiles-example-swift/Pods-ios-cloudfiles-example-swift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7C19BD75D15700C6175D558 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AB6DE4CF6EB1328B79D9DC11 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ios-cloudfiles-example-swift/Pods-ios-cloudfiles-example-swift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C79E03271C233DF7007B3F31 /* Sources */ = {
@@ -245,23 +322,27 @@
 		};
 		C79E033E1C233DF7007B3F31 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFF7475F334EF6E94959A88C /* Pods-ios-cloudfiles-example-swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "ios-cloudfiles-example-swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rokk3rlabs.ios-cloudfiles-example-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ios-cloudfiles-example-swift/ios_cloudfiles_example_swift-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		C79E033F1C233DF7007B3F31 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6549F69F9DB7E1646970FB07 /* Pods-ios-cloudfiles-example-swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "ios-cloudfiles-example-swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rokk3rlabs.ios-cloudfiles-example-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ios-cloudfiles-example-swift/ios_cloudfiles_example_swift-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -284,6 +365,7 @@
 				C79E033F1C233DF7007B3F31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
