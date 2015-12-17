@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ios-cloudfiles"
-  s.version      = "1.0.7"
+  s.version      = "1.0.8"
   s.summary      = "Rackspace Cloud Files SDK for iOS http://www.rackspace.com"
   s.homepage     = "https://github.com/felipecarreramo/ios-cloudfiles"
   s.license      = "MIT"
