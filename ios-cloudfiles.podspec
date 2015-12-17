@@ -13,10 +13,3 @@ Pod::Spec.new do |s|
   s.platform = :ios, '8.0'
 
 end
-
-
-curl https://identity.api.rackspacecloud.com/v2.0/tokens  \
- -X POST \
- -d '{"auth":{"RAX-KSKEY:apiKeyCredentials":{"username":"charlesofdl","apiKey":"834cdac66be13c28109050b0704cc7a3"}}}' \
- -H "Content-type: application/json" \
- | python -m json.tool
