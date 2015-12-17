@@ -10,7 +10,6 @@ Pod::Spec.new do |s|
   s.source       			= { :git => "https://github.com/felipecarreramo/ios-cloudfiles.git", :tag => s.version.to_s }
   s.source_files  			= "RackspaceCloudFiles/Source", "RackspaceCloudFiles/Source/*.{h,m}"
   s.requires_arc			= true
-  s.platform     			= :ios
-  s.ios.deployment_target 	= '7.0'
+  s.platform = :ios, '8.0'
 
 end
