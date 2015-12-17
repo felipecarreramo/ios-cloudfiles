@@ -146,10 +146,32 @@
 - (NSURLRequest *)authenticationRequest {
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:self.authURL];
-    [request addValue:self.username forHTTPHeaderField:@"X-Auth-User"];
-    [request addValue:self.apiKey forHTTPHeaderField:@"X-Auth-Key"];
+    NSDictionary *dict = [@"auth":
+                                    [@"RAX-KSKEY:apiKeyCredentials":
+                                            [@"username": self.username,
+                                             @"apiKey": self.apiKey]
+                                     ]
+                          ];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[self paramsToAuthenticate:dict]];
+    
     return request;
     
+}
+
+-(NSData * ) paramsToAuthenticate:(NSDictionary *) params {
+    
+    NSMutableArray *parameterArray = [NSMutableArray array];
+    
+    [params enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop) {
+        NSString *param = [NSString stringWithFormat:@"%@=%@", key, [self percentEscapeString:obj]];
+        [parameterArray addObject:param];
+    }];
+    
+    NSString *string = [parameterArray componentsJoinedByString:@"&"];
+    
+    return [string dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 - (void)authenticate:(void (^)())successHandler failure:(void (^)(NSHTTPURLResponse*, NSData*, NSError*))failureHandler {
