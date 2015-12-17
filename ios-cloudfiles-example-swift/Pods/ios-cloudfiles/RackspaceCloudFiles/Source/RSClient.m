@@ -7,7 +7,6 @@
 //
 
 #import "RSClient.h"
-#import <objc/message.h>
 
 #define $S(format, ...) [NSString stringWithFormat:format, ## __VA_ARGS__]
 
@@ -51,7 +50,7 @@
 
 - (NSMutableURLRequest *)storageRequest:(NSString *)path httpMethod:(NSString *)httpMethod {
     
-    NSURL *url = [NSURL URLWithString:$S(@"%@%@", self.storageURL, [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding])];    
+    NSURL *url = [NSURL URLWithString:$S(@"%@%@", self.storageURL, [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]])];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     [request setHTTPMethod:httpMethod];
     [request addValue:self.authToken forHTTPHeaderField:@"X-Auth-Token"];
@@ -68,7 +67,7 @@
 
 - (NSMutableURLRequest *)cdnRequest:(NSString *)path httpMethod:(NSString *)httpMethod {
     
-    NSURL *url = [NSURL URLWithString:$S(@"%@%@", self.cdnManagementURL, [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding])];    
+    NSURL *url = [NSURL URLWithString:$S(@"%@%@", self.cdnManagementURL, [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]])];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     [request setHTTPMethod:httpMethod];
     [request addValue:self.authToken forHTTPHeaderField:@"X-Auth-Token"];
@@ -94,24 +93,33 @@
     // a valid request
     
     if (self.authenticated) {
-
-        // TODO: make sure you're using the appropriate NSOperationQueue
-        [NSURLConnection sendAsynchronousRequest:objc_msgSend(sender, requestSelector, object) queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *urlResponse, NSData *data, NSError *error) {    
-
-            NSHTTPURLResponse *response = (NSHTTPURLResponse *)urlResponse;
+        
+        if ([self respondsToSelector:requestSelector]) {
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
+                                        [[RSClient class] instanceMethodSignatureForSelector:requestSelector]];
+            [invocation setSelector: requestSelector];
+            [invocation setTarget: self];
+            [invocation invoke];
+            NSURLRequest *request;
+            [invocation getReturnValue:&request];
             
-            if (response.statusCode >= 200 && response.statusCode <= 299) {
-                if (successHandler) {
-                    successHandler(response, data, error);            
-                }
-            } else {  
+            NSURLSession *session = [NSURLSession sharedSession];
+            NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable urlResponse, NSError * _Nullable error) {
                 
-                if (failureHandler) {
-                    failureHandler(response, data, error);
+                NSHTTPURLResponse *response = (NSHTTPURLResponse *) urlResponse;
+                if (response.statusCode >= 200 && response.statusCode <= 299) {
+                    if (successHandler) {
+                        successHandler(response, data, error);
+                    }
+                } else {
+                    if (failureHandler) {
+                        failureHandler(response, data, error);
+                    }
                 }
-            }
+            }];
             
-        }];
+            [task resume];
+        }
         
     } else {
         
@@ -151,12 +159,16 @@
 - (void)authenticate:(void (^)())successHandler failure:(void (^)(NSHTTPURLResponse*, NSData*, NSError*))failureHandler {
     
     NSURLRequest *request = [self authenticationRequest];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *urlResponse, NSData *data, NSError *error) {    
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+               completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable urlResponse, NSError * _Nullable error) {
         
         NSHTTPURLResponse *response = (NSHTTPURLResponse *)urlResponse;
         
-        if (response.statusCode >= 200 && response.statusCode <= 299) {            
-        
+        if (response.statusCode >= 200 && response.statusCode <= 299) {
+            
             NSDictionary *headers = [response allHeaderFields];
             self.authToken = [headers objectForKey:@"X-Auth-Token"];
             self.storageURL = [headers objectForKey:@"X-Storage-Url"];
@@ -175,27 +187,27 @@
             // an error occurs
             
             if (error != NULL) {
-
+                
                 NSString *description = $S(@"Authentication Failed for %@ at %@", self.username, self.authURL);
                 int errCode = EAUTHFAILURE;
                 
                 // Make underlying error.
                 NSError *underlyingError = [[NSError alloc] initWithDomain:error.domain
-                                                                       code:errno userInfo:nil];
+                                                                      code:errno userInfo:nil];
                 // Make and return custom domain error.
                 NSArray *objArray = [NSArray arrayWithObjects:description, underlyingError, nil];
                 NSArray *keyArray = [NSArray arrayWithObjects:NSLocalizedDescriptionKey, NSUnderlyingErrorKey, nil];
                 NSDictionary *eDict = [NSDictionary dictionaryWithObjects:objArray forKeys:keyArray];
                 
                 NSError *myError = [[NSError alloc] initWithDomain:RSErrorDomain
-                                                       code:errCode userInfo:eDict];
-
+                                                              code:errCode userInfo:eDict];
+                
                 if (failureHandler) {
                     failureHandler(response, data, myError);
                 }
                 
             } else {
-            
+                
                 if (failureHandler) {
                     failureHandler(response, data, error);
                 }
@@ -203,9 +215,12 @@
             }
             
         }
+
         
     }];
     
+    [task resume];
+
 }
 
 #pragma mark - Get Account Metadata
@@ -249,15 +264,15 @@
     NSString *path = @"?format=json";
     
     if (limit && marker) {
-        path = $S(@"?format=json&limit=%i&marker=%@", limit, marker);
+        path = $S(@"?format=json&limit=%lu&marker=%@", (unsigned long)limit, marker);
     }
     
     if (limit) {
-        path = $S(@"?format=json&marker=%@", [marker stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
+        path = $S(@"?format=json&marker=%@", [marker stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]]);
     }
     
     if (marker) {
-        path = $S(@"?format=json&limit=%i", limit);
+        path = $S(@"?format=json&limit=%lu", (unsigned long)limit);
     }
     
     return [self storageRequest:path];
@@ -368,15 +383,15 @@
     NSString *path = @"?format=json&enabled_only=true";
     
     if (limit && marker) {
-        path = $S(@"?format=json&enabled_only=true&limit=%i&marker=%@", limit, marker);
+        path = $S(@"?format=json&enabled_only=true&limit=%lu&marker=%@", (unsigned long)limit, marker);
     }
     
     if (limit) {
-        path = $S(@"?format=json&enabled_only=true&marker=%@", [marker stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
+        path = $S(@"?format=json&enabled_only=true&marker=%@", [marker stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]]);
     }
     
     if (marker) {
-        path = $S(@"?format=json&enabled_only=true&limit=%i", limit);
+        path = $S(@"?format=json&enabled_only=true&limit=%lu", (unsigned long)limit);
     }
     
     return [self cdnRequest:path];
@@ -466,7 +481,7 @@
     
     NSMutableURLRequest *request = [self cdnRequest:$S(@"/%@", container.name) httpMethod:@"POST"];
     
-    [request addValue:$S(@"%i", container.ttl) forHTTPHeaderField:@"X-TTL"];
+    [request addValue:$S(@"%li", (long)container.ttl) forHTTPHeaderField:@"X-TTL"];
     [request addValue:container.cdn_enabled ? @"True": @"False" forHTTPHeaderField:@"X-CDN-Enabled"];
     [request addValue:container.log_retention ? @"True": @"False" forHTTPHeaderField:@"X-Log-Retention"];
     

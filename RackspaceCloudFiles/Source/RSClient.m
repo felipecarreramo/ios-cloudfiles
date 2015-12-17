@@ -21,11 +21,7 @@
     
     self = [super init];
     if (self) {
-        if (provider == RSProviderTypeRackspaceUS) {
-            self.authURL = [NSURL URLWithString:@"https://auth.api.rackspacecloud.com/v1.0"];
-        } else if (provider == RSProviderTypeRackspaceUK) {
-            self.authURL = [NSURL URLWithString:@"https://lon.auth.api.rackspacecloud.com/v1.0"];
-        }
+        self.authURL = [NSURL URLWithString:@"https://identity.api.rackspacecloud.com/v2.0/tokens"];
         self.username = aUsername;
         self.apiKey = anApiKey;
     }
@@ -104,7 +100,7 @@
             [invocation getReturnValue:&request];
             
             NSURLSession *session = [NSURLSession sharedSession];
-            [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable urlResponse, NSError * _Nullable error) {
+            NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable urlResponse, NSError * _Nullable error) {
                 
                 NSHTTPURLResponse *response = (NSHTTPURLResponse *) urlResponse;
                 if (response.statusCode >= 200 && response.statusCode <= 299) {
@@ -117,6 +113,8 @@
                     }
                 }
             }];
+            
+            [task resume];
         }
         
     } else {
@@ -159,7 +157,8 @@
     NSURLRequest *request = [self authenticationRequest];
     
     NSURLSession *session = [NSURLSession sharedSession];
-    [session dataTaskWithRequest:request
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
                completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable urlResponse, NSError * _Nullable error) {
         
         NSHTTPURLResponse *response = (NSHTTPURLResponse *)urlResponse;
@@ -215,6 +214,8 @@
 
         
     }];
+    
+    [task resume];
 
 }
 

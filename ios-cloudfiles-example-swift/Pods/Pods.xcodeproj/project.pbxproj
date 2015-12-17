@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23FD114568CB73148E96501A985AF317 /* RSCDNContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2453F5C713F114A2D8E16DBF1D9CF6AE /* RSCDNContainer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		2E3399A3336A1217405A05EEAAC6C772 /* RSStorageObject.h in Headers */ = {isa = PBXBuildFile; fileRef = AC29203B6E03382D35AAED79BDF822D9 /* RSStorageObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3DDED89EB584DD12AA78019568830535 /* RSClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FFD3396564ECEC60C9E237FC1C9017 /* RSClient.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		47585707DC43695FEC3B23C428D6CB26 /* RSContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D698A1934449882B24D6AC623A4724 /* RSContainer.m */; };
+		697E2990FC7679FF49EB9EDF95410499 /* ios-cloudfiles-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF6FD938B3F0631AF12FA8A8F8905CB /* ios-cloudfiles-dummy.m */; };
 		69A71EEDAD850766F176646C4B0ED822 /* Pods-ios-cloudfiles-example-swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9508D42662252C6D3EA48FE9353BC4CD /* Pods-ios-cloudfiles-example-swift-dummy.m */; };
+		6B45081D6BC7AC4A744FDDB3A8B411D6 /* RSStorageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B4E229ED95394ED766BB5052B5BBB0 /* RSStorageObject.m */; };
 		7217786A055A6DD7685C239C15775CB6 /* RSContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 20ECAE70896E5BEBC62C045D82B3D7FD /* RSContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		750F57E6DBFCD5A9C1F90BB3FD7F172A /* RSModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B59DB40B8422D36BC1256EB7476919A0 /* RSModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9554A8379B5575D02B7B8047A38AC99E /* RSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66857F95CEDBE9BCB13A910315B63F7D /* RSModel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		833C0F20C606338B5470E98572DBD700 /* RSClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FFD3396564ECEC60C9E237FC1C9017 /* RSClient.m */; };
 		A1713632D8C0E986567DF71CDA35E410 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		A1A31E6B6627DE4DB3F27B69754AB171 /* ios-cloudfiles-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF6FD938B3F0631AF12FA8A8F8905CB /* ios-cloudfiles-dummy.m */; };
-		A32CBE577571EFC2DF1D19A1B2252AF8 /* RSStorageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B4E229ED95394ED766BB5052B5BBB0 /* RSStorageObject.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		CB0E8EB7F24D32CAFF16F7094C813B8A /* RSContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D698A1934449882B24D6AC623A4724 /* RSContainer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		AFDEF0CF6B874B8A55642966CD31E331 /* RSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66857F95CEDBE9BCB13A910315B63F7D /* RSModel.m */; };
 		CD95C23C105A0906E463F6EB168CD9B3 /* RSCDNContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AE9AC71C84293C17DD7D292DCE8F6F3 /* RSCDNContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EB591015F6679E2A1963CE0FC8267225 /* RSCDNContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2453F5C713F114A2D8E16DBF1D9CF6AE /* RSCDNContainer.m */; };
 		F4FFD48F08D90E17EBA713673E0614AE /* RSClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 2972A8A83BE6FAC91AC13DCD6FF1931C /* RSClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F64D20F67367503FEF523871590CA0F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -198,7 +198,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 82BF5F84042C3BFBC4FA4636282555B1 /* Build configuration list for PBXNativeTarget "ios-cloudfiles" */;
 			buildPhases = (
-				B46E79B63464E5DBD0B8030D2C28066F /* Sources */,
+				84453EDAADFFFBCCAD1B45C220ED3243 /* Sources */,
 				C9285854B84DEB7EE103C1576A353CB7 /* Frameworks */,
 				8EC9F8A30E803C16E927E764B4D463C4 /* Headers */,
 			);
@@ -264,16 +264,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B46E79B63464E5DBD0B8030D2C28066F /* Sources */ = {
+		84453EDAADFFFBCCAD1B45C220ED3243 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1A31E6B6627DE4DB3F27B69754AB171 /* ios-cloudfiles-dummy.m in Sources */,
-				23FD114568CB73148E96501A985AF317 /* RSCDNContainer.m in Sources */,
-				3DDED89EB584DD12AA78019568830535 /* RSClient.m in Sources */,
-				CB0E8EB7F24D32CAFF16F7094C813B8A /* RSContainer.m in Sources */,
-				9554A8379B5575D02B7B8047A38AC99E /* RSModel.m in Sources */,
-				A32CBE577571EFC2DF1D19A1B2252AF8 /* RSStorageObject.m in Sources */,
+				697E2990FC7679FF49EB9EDF95410499 /* ios-cloudfiles-dummy.m in Sources */,
+				EB591015F6679E2A1963CE0FC8267225 /* RSCDNContainer.m in Sources */,
+				833C0F20C606338B5470E98572DBD700 /* RSClient.m in Sources */,
+				47585707DC43695FEC3B23C428D6CB26 /* RSContainer.m in Sources */,
+				AFDEF0CF6B874B8A55642966CD31E331 /* RSModel.m in Sources */,
+				6B45081D6BC7AC4A744FDDB3A8B411D6 /* RSStorageObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
