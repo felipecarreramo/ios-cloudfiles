@@ -1,5 +1,5 @@
 PODS:
-  - ios-cloudfiles (1.0.9)
+  - ios-cloudfiles (1.0.10)
 
 DEPENDENCIES:
   - ios-cloudfiles (from `https://github.com/felipecarreramo/ios-cloudfiles.git`)
@@ -10,10 +10,10 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ios-cloudfiles:
-    :commit: da2682ea830212383ebded8e6de527b1ebffa966
+    :commit: b1374d6fa5494a78c462947e6a4676d693f8a2c8
     :git: https://github.com/felipecarreramo/ios-cloudfiles.git
 
 SPEC CHECKSUMS:
-  ios-cloudfiles: 36ca1eb721dcb45908b43564f79d61c531c378d5
+  ios-cloudfiles: 44b142df1d67ef7909db6d71155e9c640cf1fbd0
 
 COCOAPODS: 0.39.0
